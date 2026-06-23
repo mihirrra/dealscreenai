@@ -20,7 +20,7 @@ export default function RootLayout({
               <div className="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">BB</div>
               <span className="text-white font-bold text-sm">DealScreenAI</span>
             </div>
-            <div className="flex gap-2 md:gap-4 overflow-x-auto">
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide max-w-[60vw]">
               <a href="/" className="text-gray-300 hover:text-white transition text-xs md:text-sm whitespace-nowrap">Chat</a>
               <a href="/properties" className="text-gray-300 hover:text-white transition text-xs md:text-sm whitespace-nowrap">Properties</a>
               <a href="/dashboard" className="text-gray-300 hover:text-white transition text-xs md:text-sm whitespace-nowrap">Dashboard</a>
