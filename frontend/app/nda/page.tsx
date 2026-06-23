@@ -1,11 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 
-const BACKEND_URL = "http://127.0.0.1:8000";
+const BACKEND_URL = "https://dealscreenai-production.up.railway.app";
 
-export default function NDAPage() {
+function NDAContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
   
@@ -25,9 +25,9 @@ export default function NDAPage() {
         lead_email: email
       });
       setSigned(true);
-setTimeout(() => {
-  window.location.href = "/properties";
-}, 3000);
+      setTimeout(() => {
+        window.location.href = "/properties";
+      }, 3000);
     } catch (error) {
       alert("Something went wrong. Please try again.");
     }
@@ -40,13 +40,7 @@ setTimeout(() => {
         <div className="bg-gray-900 rounded-2xl p-8 max-w-md w-full text-center">
           <div className="text-6xl mb-4">🎉</div>
           <h1 className="text-white text-2xl font-bold mb-2">NDA Signed!</h1>
-          <p className="text-gray-400 mb-6">You now have access to exclusive BB2022Realty listings.</p>
-          
-            <a href="/properties"
-            className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-500 transition"
-          >
-            View Properties
-          </a>
+          <p className="text-gray-400 mb-6">Redirecting to properties...</p>
         </div>
       </main>
     );
@@ -55,8 +49,6 @@ setTimeout(() => {
   return (
     <main className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="bg-gray-900 rounded-2xl p-8 max-w-lg w-full">
-        
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
             <span className="text-white text-2xl font-bold">BB</span>
@@ -65,7 +57,6 @@ setTimeout(() => {
           <p className="text-gray-400 mt-2">BB2022Realty - Commercial Properties Illinois</p>
         </div>
 
-        {/* NDA Text */}
         <div className="bg-gray-800 rounded-xl p-4 mb-6 h-48 overflow-y-auto">
           <p className="text-gray-300 text-sm leading-relaxed">
             This Non-Disclosure Agreement ("Agreement") is entered into between BB2022Realty 
@@ -86,7 +77,6 @@ setTimeout(() => {
           </p>
         </div>
 
-        {/* Form */}
         <div className="space-y-4 mb-6">
           <input
             type="text"
@@ -104,7 +94,6 @@ setTimeout(() => {
           />
         </div>
 
-        {/* Checkbox */}
         <div className="flex items-start gap-3 mb-6">
           <input
             type="checkbox"
@@ -118,7 +107,6 @@ setTimeout(() => {
           </label>
         </div>
 
-        {/* Sign Button */}
         <button
           onClick={signNDA}
           disabled={!agreed || !name || !email || loading}
@@ -126,8 +114,17 @@ setTimeout(() => {
         >
           {loading ? "Signing..." : "Sign NDA & View Properties"}
         </button>
-
       </div>
     </main>
+  );
+}
+
+export default function NDAPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <p className="text-white">Loading...</p>
+    </div>}>
+      <NDAContent />
+    </Suspense>
   );
 }
