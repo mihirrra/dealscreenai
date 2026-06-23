@@ -73,8 +73,8 @@ export default function Home() {
   };
 
  return (
-    <main className="min-h-screen bg-gray-950 flex items-center justify-center p-2 md:p-4">
-      <div className="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[95vh] md:h-[85vh]">
+    <main className="bg-gray-950 flex items-center justify-center p-2 md:p-4" style={{height: 'calc(100vh - 52px)'}}>
+  <div className="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col" style={{height: '100%'}}>
         
         {/* Header */}
         <div className="bg-blue-900 rounded-t-2xl p-3 md:p-4 flex items-center gap-3">
