@@ -72,30 +72,30 @@ export default function Home() {
     setLoading(false);
   };
 
-  return (
-    <main className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[85vh]">
+ return (
+    <main className="min-h-screen bg-gray-950 flex items-center justify-center p-2 md:p-4">
+      <div className="w-full max-w-2xl bg-gray-900 rounded-2xl shadow-2xl flex flex-col h-[95vh] md:h-[85vh]">
         
         {/* Header */}
-        <div className="bg-blue-900 rounded-t-2xl p-4 flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+        <div className="bg-blue-900 rounded-t-2xl p-3 md:p-4 flex items-center gap-3">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
             BB
           </div>
           <div>
-            <h1 className="text-white font-bold text-lg">BB2022Realty</h1>
-            <p className="text-blue-300 text-sm">Commercial Properties Illinois</p>
+            <h1 className="text-white font-bold text-base md:text-lg">BB2022Realty</h1>
+            <p className="text-blue-300 text-xs md:text-sm">Commercial Properties Illinois</p>
           </div>
           <div className="ml-auto flex items-center gap-2">
             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-            <span className="text-green-400 text-sm">Online</span>
+            <span className="text-green-400 text-xs md:text-sm">Online</span>
           </div>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3">
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+              <div className={`max-w-[85%] md:max-w-[80%] rounded-2xl px-3 md:px-4 py-2 md:py-3 text-sm md:text-base ${
                 msg.role === "user"
                   ? "bg-blue-600 text-white"
                   : "bg-gray-800 text-gray-100"
@@ -119,12 +119,12 @@ export default function Home() {
 
           {/* NDA Banner */}
           {triggerNDA && (
-            <div className="bg-yellow-900 border border-yellow-500 rounded-2xl p-4 text-center">
-              <p className="text-yellow-300 font-bold mb-2">🎉 You Qualify!</p>
-              <p className="text-yellow-200 text-sm mb-3">Please sign our NDA to view exclusive listings</p>
+            <div className="bg-yellow-900 border border-yellow-500 rounded-2xl p-3 md:p-4 text-center">
+              <p className="text-yellow-300 font-bold mb-2 text-sm md:text-base">🎉 You Qualify!</p>
+              <p className="text-yellow-200 text-xs md:text-sm mb-3">Please sign our NDA to view exclusive listings</p>
               
-                <a href={`/nda?session=${sessionId}`}
-                className="bg-yellow-500 text-black px-6 py-2 rounded-full font-bold hover:bg-yellow-400 transition"
+               <a href={`/nda?session=${sessionId}`}
+                className="bg-yellow-500 text-black px-4 md:px-6 py-2 rounded-full font-bold hover:bg-yellow-400 transition text-sm"
               >
                 Sign NDA Now
               </a>
@@ -135,19 +135,19 @@ export default function Home() {
         </div>
 
         {/* Input */}
-        <div className="p-4 border-t border-gray-800 flex gap-3">
+        <div className="p-3 md:p-4 border-t border-gray-800 flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type your message..."
-            className="flex-1 bg-gray-800 text-white rounded-full px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 bg-gray-800 text-white rounded-full px-3 md:px-4 py-2 md:py-3 outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           />
           <button
             onClick={sendMessage}
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-500 text-white rounded-full px-6 py-3 font-bold transition disabled:opacity-50"
+            className="bg-blue-600 hover:bg-blue-500 text-white rounded-full px-4 md:px-6 py-2 md:py-3 font-bold transition disabled:opacity-50 text-sm"
           >
             Send
           </button>
@@ -155,5 +155,5 @@ export default function Home() {
 
       </div>
     </main>
-  );
-}
+ )
+};
