@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+supabase
+groq
+python-dotenv
+resend
+langchain
+langchain-groq
+sentence-transformers
+pypdf2
+python-multipart
+pydantic
