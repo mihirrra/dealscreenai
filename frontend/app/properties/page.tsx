@@ -153,13 +153,13 @@ export default function PropertiesPage() {
 
                   <div className="flex gap-2">
                     
-                       <a href="tel:6305503598"
+                       <a href="tel:917043612194"
                       className="flex-1 bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg text-sm font-medium transition text-center"
                     >
                       📞 Call Broker
                     </a>
                     
-                       <a href="https://wa.me/16305503598"
+                       <a href="https://wa.me/917043612194"
                       target="_blank"
                       className="flex-1 bg-green-700 hover:bg-green-600 text-white py-2 rounded-lg text-sm font-medium transition text-center"
                     >
